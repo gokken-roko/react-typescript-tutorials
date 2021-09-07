@@ -1,0 +1,17 @@
+---
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+  artifacts:
+  - image: tic-tac-toe-image
+    context: .
+    # multi stage の Dockerfile ではなく
+    # Dev の Dockerfile を作った方が良さそうだったからコメントアウト
+    #sync:
+    #  manual:
+    #  - src: 'src/*'
+    #    dest: .
+deploy:
+  kustomize:
+    paths:
+      - "manifests"
