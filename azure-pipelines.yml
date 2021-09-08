@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-- name: wokingdirectory
+- name: workingdirectory
   value: "tic-tac-toe"
 
 steps:
