@@ -27,4 +27,4 @@ steps:
 - script: |
     yarn test
   workingDirectory: $(workingdirectory)
-  displayName: 'yarn test'
+  displayName: 'yarn test --watchAll=false'
