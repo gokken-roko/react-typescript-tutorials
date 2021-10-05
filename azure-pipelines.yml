@@ -25,6 +25,6 @@ steps:
   displayName: 'yarn'
 
 - script: |
-    yarn test
+    yarn test --watchAll=false
   workingDirectory: $(workingdirectory)
   displayName: 'yarn test --watchAll=false'
