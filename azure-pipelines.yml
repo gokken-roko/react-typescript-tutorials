@@ -25,6 +25,16 @@ steps:
   displayName: 'yarn'
 
 - script: |
-    yarn test --watchAll=false
+    yarn test:ci --watchAll=false
   workingDirectory: $(workingdirectory)
-  displayName: 'yarn test --watchAll=false'
+  displayName: 'yarn test:ci --watchAll=false'
+
+# https://docs.microsoft.com/ja-jp/azure/devops/pipelines/tasks/test/publish-test-results?view=azure-devops&tabs=trx%2Cyaml#yaml-snippet
+- task: PublishTestResults@2
+  displayName: 'test results'
+  condition: succeededOrFailed()
+  inputs:
+    # https://jestjs.io/ja/docs/cli#--reporters
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'junit.xml'
+    searchFolder: $(workingdirectory)
